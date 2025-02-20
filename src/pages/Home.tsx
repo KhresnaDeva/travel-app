@@ -69,20 +69,20 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 shadow-lg">
+    <div className="bg-gray-50 min-h-screen">
+      <header className="bg-gradient-to-r from-blue-400 to-indigo-500 py-8 shadow-sm">
         <div className="container mx-auto flex justify-between items-center px-6">
-          <h1 className="text-white text-3xl font-bold">Latest Travel Articles</h1>
+          <h1 className="text-white text-4xl font-serif font-bold">Latest Travel Articles</h1>
           <div className="flex gap-4">
             <Link
               to="/create-article"
-              className="bg-white text-blue-600 px-4 py-2 rounded-lg shadow-md font-semibold hover:bg-blue-100 transition duration-300"
+              className="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-blue-50 transition duration-300"
             >
               + Create New Article
             </Link>
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md font-semibold hover:bg-red-600 transition duration-300"
+              className="bg-red-500 text-white px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-red-600 transition duration-300"
             >
               Logout
             </button>
@@ -90,8 +90,8 @@ const Home: React.FC = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {articles.map((article) => {
             const title = article.title || 'Untitled';
             const description = article.description || 'No description available.';
@@ -101,21 +101,21 @@ const Home: React.FC = () => {
               <motion.div
                 key={article.id}
                 whileHover={{ scale: 1.03 }}
-                className="relative bg-white rounded-lg shadow-lg overflow-hidden transition transform hover:shadow-xl"
+                className="relative bg-white rounded-xl shadow-md overflow-hidden transition transform hover:shadow-lg"
               >
                 <Link to={`/article/${article.documentId}`} className="block">
-                  <img src={imageUrl} alt={title} className="w-full h-56 object-cover" />
-                  <div className="p-4">
-                    <h2 className="text-xl font-bold text-gray-800">{title}</h2>
-                    <p className="text-gray-600 mt-2">{description}</p>
+                  <img src={imageUrl} alt={title} className="w-full h-64 object-cover" />
+                  <div className="p-6">
+                    <h2 className="text-2xl font-serif font-bold text-gray-800 mb-4">{title}</h2>
+                    <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
                   </div>
                 </Link>
 
                 {/* ✅ Tombol Delete di Kanan Bawah */}
-                <div className="absolute bottom-4 right-4">
+                <div className="absolute bottom-6 right-6">
                   <button
                     onClick={() => handleDelete(article.documentId)}
-                    className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600 transition duration-300"
+                    className="bg-red-500 text-white px-4 py-2 rounded-full text-sm hover:bg-red-600 transition duration-300"
                   >
                     Delete
                   </button>
