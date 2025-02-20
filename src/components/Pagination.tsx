@@ -13,7 +13,7 @@ const Pagination: React.FC = () => {
     }
   };
 
-  // Jika data sedang loading atau total halaman <= 1, sembunyikan pagination
+  
   if (status === 'loading' || totalPages <= 1) return null;
 
   return (

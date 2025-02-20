@@ -4,10 +4,10 @@ import { fetchArticles } from '../store/slices/articleSlice';
 import ArticleCard from './ArticleCard';
 import Pagination from './Pagination';
 import LoadingSpinner from './LoadingSpinner';
-import { RootState } from '../store/store';
+import { RootState, AppDispatch } from '../store/store'; 
 
 const ArticleList: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>(); 
   const { articles, status, error } = useSelector((state: RootState) => state.articles);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ArticleList: React.FC = () => {
   return (
     <div className="container mx-auto px-4">
       {status === 'loading' && <LoadingSpinner />}
-      
+
       {status === 'failed' && (
         <div className="text-red-500 text-center my-8">{error}</div>
       )}
@@ -29,7 +29,7 @@ const ArticleList: React.FC = () => {
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
-          
+
           <Pagination />
         </>
       )}
@@ -38,4 +38,3 @@ const ArticleList: React.FC = () => {
 };
 
 export default ArticleList;
-export {};
